@@ -737,7 +737,7 @@ final class AppViewModel: ObservableObject {
                     self.cardFlashPhase = .done(ok: true)
                     self.cardFlashProgress = 1.0
                     self.cardFlashLog.append("🎉 已成功刷入 \(successCount)/\(selected.count) 张卡片！请强制关闭「钱包」App 后查看效果。")
-                    self.successAlertMessage = "已成功为 \(successCount) 张卡片应用卡面！\n\n请强制关闭 iPhone 上的「钱包」App（或重启设备）后查看新卡面。")
+                    self.successAlertMessage = "已成功为 \(successCount) 张卡片应用卡面！\n\n请强制关闭 iPhone 上的「钱包」App（或重启设备）后查看新卡面。"
                     self.showSuccessAlert = true
                 } else {
                     self.cardFlashPhase = .done(ok: false)
@@ -828,7 +828,7 @@ final class AppViewModel: ObservableObject {
                         rawKeyData: rawData
                     )
                 } else {
-                    self.errorMessage = "读取 .passthm 失败——格式无效或不受支持。")
+                    self.errorMessage = "读取 .passthm 失败——格式无效或不受支持。"
                 }
             }
         }
@@ -877,7 +877,7 @@ final class AppViewModel: ObservableObject {
         }
 
         guard !keys.isEmpty else {
-            errorMessage = "没有载入任何按键图片。")
+            errorMessage = "没有载入任何按键图片。"
             return
         }
 
@@ -1047,7 +1047,7 @@ final class AppViewModel: ObservableObject {
                     self.passthmFlashProgress = 1.0
                     self.passthmFlashPhase = .done(ok: true)
                     self.passthmFlashLog.append("🎉 密码盘主题已应用！锁屏后即可看到效果。")
-                    self.successAlertMessage = "密码盘主题应用成功！\n\n请锁定 iPhone（或重启设备）后查看新的密码键盘。")
+                    self.successAlertMessage = "密码盘主题应用成功！\n\n请锁定 iPhone（或重启设备）后查看新的密码键盘。"
                     self.showSuccessAlert = true
                 } else {
                     self.passthmFlashPhase = .done(ok: false)
@@ -1060,7 +1060,7 @@ final class AppViewModel: ObservableObject {
     func exportPassthm() -> URL? {
         let keys = effectiveKeys
         guard !keys.isEmpty else {
-            errorMessage = "导出前请至少设置一个按键。")
+            errorMessage = "导出前请至少设置一个按键。"
             return nil
         }
         do {
@@ -1153,7 +1153,7 @@ final class AppViewModel: ObservableObject {
         guard FileManager.default.fileExists(atPath: pairingPath) else {
             if !silent {
                 await MainActor.run {
-                    self.errorMessage = "当前没有生效的配对文件，请先在「配对」标签页完成配对。")
+                    self.errorMessage = "当前没有生效的配对文件，请先在「配对」标签页完成配对。"
                 }
             }
             return
@@ -1173,7 +1173,7 @@ final class AppViewModel: ObservableObject {
         } catch {
             if !silent {
                 await MainActor.run {
-                    self.errorMessage = "自动检测失败：\(error.localizedDescription)\n请确保 LocalDevVPN 已连接，且设备处于解锁状态。")
+                    self.errorMessage = "自动检测失败：\(error.localizedDescription)\n请确保 LocalDevVPN 已连接，且设备处于解锁状态。"
                 }
             }
         }
@@ -1182,13 +1182,13 @@ final class AppViewModel: ObservableObject {
     func flashSelectedTendies() async {
         let selected = tendieItems.filter { $0.isSelected }
         guard !selected.isEmpty else {
-            errorMessage = "没有选择要刷入的壁纸。")
+            errorMessage = "没有选择要刷入的壁纸。"
             return
         }
 
         let pairingPath = PairingController.pairingFilePath()
         guard FileManager.default.fileExists(atPath: pairingPath) else {
-            errorMessage = "当前没有生效的配对文件，请先完成设备配对。")
+            errorMessage = "当前没有生效的配对文件，请先完成设备配对。"
             return
         }
 
@@ -1199,7 +1199,7 @@ final class AppViewModel: ObservableObject {
                 self.posterBoardContainer = container
                 UserDefaults.standard.set(container, forKey: "aircard.posterboard_container")
             } catch {
-                errorMessage = "无法自动找到 PosterBoard 容器。请确保 LocalDevVPN 已连接且 iPhone 已解锁。")
+                errorMessage = "无法自动找到 PosterBoard 容器。请确保 LocalDevVPN 已连接且 iPhone 已解锁。"
                 return
             }
         }
