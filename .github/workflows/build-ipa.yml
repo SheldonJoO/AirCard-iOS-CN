@@ -9,7 +9,7 @@ on:
 jobs:
   build-ipa:
     name: 构建免签名 IPA
-    runs-on: macos-15
+    runs-on: macos-latest
 
     steps:
       - name: 检出代码
