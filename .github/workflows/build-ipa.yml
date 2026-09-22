@@ -1,0 +1,60 @@
+name: 构建 IPA
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build-ipa:
+    name: 构建免签名 IPA
+    runs-on: macos-15
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 显示 Xcode 版本
+        run: |
+          xcodebuild -version
+          xcrun simctl list runtimes
+
+      - name: 构建 IPA
+        run: ./build-ipa.sh Release
+
+      - name: 核对产物
+        run: |
+          ls -lh build/AirCard-iOS.ipa
+          mkdir -p dist
+          cp build/AirCard-iOS.ipa dist/AirCard-iOS-CN.ipa
+
+      - name: 上传构建产物
+        uses: actions/upload-artifact@v4
+        with:
+          name: AirCard-iOS-CN-IPA
+          path: dist/AirCard-iOS-CN.ipa
+          if-no-files-found: error
+
+      - name: 发布到 Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/AirCard-iOS-CN.ipa
+          name: AirCard-iOS 中文版 ${{ github.ref_name }}
+          body: |
+            AirCard-iOS 简体中文汉化版安装包（免签名）。
+
+            ## 安装方式
+            本 IPA **未签名**，需自行签名后安装：
+            - TrollStore（推荐，iOS 18+ 若支持）
+            - SideStore / AltStore
+            - LiveContainer
+            - Xcode 或 iOS App Signer
+
+            ## 使用前提
+            1. iOS 27.0 及以上
+            2. 已运行 LocalDevVPN（回环模式）
+            3. 在「设置 › 隐私与安全性 › 开发者模式 › 与 AirCard-iOS 配对」完成配对
+
+            上游项目：https://github.com/Mak5er/AirCard-iOS

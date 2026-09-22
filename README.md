@@ -14,7 +14,6 @@
   <img src="https://img.shields.io/badge/Rust-FFI%20核心-red?style=flat-square&logo=rust" alt="Rust" />
   <img src="https://img.shields.io/badge/界面语言-简体中文-brightgreen?style=flat-square" alt="简体中文" />
   <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License" />
-  <a href="https://www.paypal.com/donate/?hosted_button_id=98QRTC2HFRA4Y"><img src="https://img.shields.io/badge/捐赠-PayPal-00457C?style=flat-square&logo=paypal" alt="通过 PayPal 捐赠" /></a>
 </p>
 
 ## 关于本仓库
@@ -68,7 +67,28 @@ App 通过 LocalDevVPN 提供的本地回环隧道（`10.7.0.1` 或 `127.0.0.1`�
 2. **LocalDevVPN**：需以回环模式运行（`10.7.0.1` 或 `127.0.0.1`），让本地连接能够访问设备内部服务。
 3. **开发者模式配对**：直接在「设置 › 隐私与安全性 › 开发者模式 › 与 AirCard-iOS 配对」中完成配对，或把已有的配对 plist 放入 App 的 Documents 目录。
 
+## 获取安装包（IPA）
+
+App 的**源码在 `ios-app/` 目录**，要装到手机上需要编译成 `.ipa`。你有两种方式拿到安装包：
+
+### 方式一：直接下载现成 IPA（推荐）
+
+前往 **Releases** 页面下载编译好的安装包（免签名）：
+
+👉 **https://github.com/SheldonJoO/AirCard-iOS-CN/releases**
+
+每次打 `v*` 标签时，GitHub Actions 会自动构建并附上 IPA；也可以在仓库的
+「Actions → 构建 IPA」页面点 **Run workflow** 手动触发一次构建。
+
+### 方式二：自己编译
+
+见下方「从源码构建」一节，执行 `./build-ipa.sh` 即可，产物在 `build/AirCard-iOS.ipa`。
+若本机编译时遇到 `No simulator runtime version ... available` 报错，说明缺少与 Xcode
+SDK 版本匹配的 iOS 模拟器运行时，用 `xcodebuild -downloadPlatform iOS` 装一个即可。
+
 ## 安装方式
+
+> 注意：Releases 里的 IPA **未签名**，需要你自行签名后安装。
 
 使用你习惯的侧载方式安装 `AirCard-iOS.ipa`：
 
@@ -137,14 +157,17 @@ AirCard-iOS/
 - 整体思路建立在 **AirCard** 项目之上。
 - 简体中文汉化与维护：**SheldonJoO**。
 
-## 支持原作者
+## 感谢上游作者
 
-AirCard-iOS 由原作者无偿维护，如果你愿意支持其开发：
+AirCard-iOS 是一个优秀的开源项目，由 **[@mak5er](https://github.com/mak5er)** 等人无偿开发与维护。
+**本仓库只是它的简体中文汉化版本，所有功能实现、漏洞利用研究与工程成果均归上游作者所有**——
+我只做了文本翻译，没有做任何原创开发。
 
-- **PayPal**：[通过 PayPal 捐赠](https://www.paypal.com/donate/?hosted_button_id=98QRTC2HFRA4Y)
-- **TON**：`UQBm9KPhtMw-XVVjirUoa09wzrlyWsbeZhKfefl1Uw-qNZ-r`
-- **USDT（TRC20）**：`TDkDMCyjYxgvkWUnQiF5Erk2RyPQMT6G1n`
-- **USDT / BNB（BEP20）**：`0x0954dc491c502849d04956ef74634aa5931a08e8`
+如果你想支持这个项目，请**直接向原项目捐赠**：
+
+👉 **[Mak5er/AirCard-iOS](https://github.com/Mak5er/AirCard-iOS)** —— 原项目页面内有官方捐赠渠道
+
+请不要向本汉化仓库捐赠，所有支持都应流向真正付出劳动的上游作者。
 
 ## 许可证
 

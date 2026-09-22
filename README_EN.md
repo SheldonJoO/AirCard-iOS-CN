@@ -13,8 +13,12 @@
   <img src="https://img.shields.io/badge/Swift-5.0-orange?style=flat-square&logo=swift" alt="Swift" />
   <img src="https://img.shields.io/badge/Rust-FFI%20Core-red?style=flat-square&logo=rust" alt="Rust" />
   <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License" />
-  <a href="https://www.paypal.com/donate/?hosted_button_id=98QRTC2HFRA4Y"><img src="https://img.shields.io/badge/Donate-PayPal-00457C?style=flat-square&logo=paypal" alt="Donate with PayPal" /></a>
 </p>
+
+> **Note (Chinese localization fork)**: this repository is a Simplified-Chinese
+> localization of [Mak5er/AirCard-iOS](https://github.com/Mak5er/AirCard-iOS).
+> Donation entries have been removed from this fork on purpose — all credit and
+> any support should go to the **upstream project**.
 
 ## Overview
 
@@ -122,14 +126,17 @@ AirCard-iOS/
 - **[NeoSpring](https://github.com/rooootdev/neospring)**: Swift implementation by **[@skadz108](https://github.com/skadz108)** and **[@rooootdev](https://github.com/rooootdev)**, and **[@neonmodder123](https://github.com/neonmodder123)** for the WebKit GPU process respring technique.
 - Built upon concepts from the **AirCard** project.
 
-## Support
+## Support the upstream author
 
-If you want to support AirCard-iOS development:
+AirCard-iOS is developed and maintained for free by **[@mak5er](https://github.com/mak5er)**
+and contributors. **This fork is only a Simplified-Chinese localization — all the
+functionality, research and engineering credit belongs to the upstream authors.**
 
-- **PayPal**: [Donate via PayPal](https://www.paypal.com/donate/?hosted_button_id=98QRTC2HFRA4Y)
-- **TON**: `UQBm9KPhtMw-XVVjirUoa09wzrlyWsbeZhKfefl1Uw-qNZ-r`
-- **USDT (TRC20)**: `TDkDMCyjYxgvkWUnQiF5Erk2RyPQMT6G1n`
-- **USDT / BNB (BEP20)**: `0x0954dc491c502849d04956ef74634aa5931a08e8`
+To support the project, please donate through the **upstream repository**:
+
+👉 **[Mak5er/AirCard-iOS](https://github.com/Mak5er/AirCard-iOS)**
+
+Please do not donate to this localization fork.
 
 ## License
 
